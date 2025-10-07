@@ -1,3 +1,4 @@
+"use client"
 import { redirect } from 'next/navigation'
 import { getEmployeeSession, roleSatisfies } from '@/lib/employee-auth'
 import React from 'react'
@@ -100,21 +101,9 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { useRouter } from 'next/navigation'
+import { EnrollButton } from './EnrollButton'
 
-function EnrollButton({ courseId }: { courseId: string }) {
-  'use client'
-  const [pending, start] = useTransition()
-  const router = useRouter()
-  return (
-    <Button size="sm" disabled={pending} onClick={() => {
-      start(async () => {
-        const res = await fetch(`/api/hrm/courses/${courseId}/enroll`, { method: 'POST' })
-        if (res.ok) router.refresh()
-      })
-    }}>Enroll</Button>
-  )
-}
+// EnrollButton is now imported from './EnrollButton'
 
 function CreateCourseDialog() {
   'use client'

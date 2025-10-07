@@ -73,6 +73,7 @@ export default async function CourseDetail({ params }: { params: { id: string } 
   try {
     const data = await fetchJSON(`/api/hrm/courses/${params.id}`)
     course = data.course
+    "use client"
     const enrollments = await fetchJSON(`/api/hrm/enrollments?courseId=${params.id}`)
     enrollment = (enrollments.enrollments || [])[0] || null
     if (enrollment) {
