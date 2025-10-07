@@ -2,28 +2,8 @@ import { NextResponse, type NextRequest } from 'next/server'
 
 // Build a CSP string with optional runtime additions.
 function buildCSP() {
-  const extraConnect = process.env.CSP_EXTRA_CONNECT?.trim()
-  // Base directives (lean, can be extended later for SSE or analytics endpoints)
-  const directives: Record<string, string[]> = {
-    'default-src': ["'self'"],
-    'script-src': ["'self'"],
-    'style-src': ["'self'", 'https:', "'unsafe-inline'"], // Tailwind JIT sometimes injects inline in dev
-    'img-src': ["'self'", 'data:', 'blob:', 'https:'],
-    'font-src': ["'self'", 'https:', 'data:'],
-    'connect-src': ["'self'", 'https:'],
-    'frame-src': ["'none'"],
-    'object-src': ["'none'"],
-    'base-uri': ["'self'"],
-    'form-action': ["'self'"],
-    'frame-ancestors': ["'none'"],
-    'upgrade-insecure-requests': [],
-  }
-  if (extraConnect) {
-    extraConnect.split(',').map(s => s.trim()).filter(Boolean).forEach(v => directives['connect-src'].push(v))
-  }
-  return Object.entries(directives)
-    .map(([k, vals]) => (vals.length ? `${k} ${vals.join(' ')}` : k))
-    .join('; ')
+  // Use the provided CSP content
+  return "default-src 'self'; script-src 'self' 'unsafe-inline';"
 }
 
 export function middleware(req: NextRequest) {
