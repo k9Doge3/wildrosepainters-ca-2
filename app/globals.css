@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Updated color scheme for Wildrose Painters - professional gray and purple palette */
+    --background: 0 0% 100%; /* white */
+    --foreground: 215 25% 27%; /* gray-800 #1f2937 */
+
+    --card: 214 32% 91%; /* light gray #f1f5f9 */
+    --card-foreground: 215 25% 27%; /* gray-800 */
+
+    --popover: 0 0% 100%; /* white */
+    --popover-foreground: 215 25% 27%; /* gray-800 */
+
+    --primary: 215 25% 27%; /* gray-800 for CTA buttons */
+    --primary-foreground: 0 0% 100%; /* white text on primary */
+
+    --secondary: 258 90% 66%; /* purple accent #8b5cf6 */
+    --secondary-foreground: 0 0% 100%; /* white text on secondary */
+
+    --muted: 214 32% 91%; /* light gray #f1f5f9 */
+    --muted-foreground: 215 16% 47%; /* gray-600 #6b7280 */
+
+    --accent: 258 90% 66%; /* purple accent */
+    --accent-foreground: 0 0% 100%; /* white text on accent */
+
+    --destructive: 0 72% 51%; /* red #dc2626 */
+    --destructive-foreground: 0 0% 100%; /* white */
+
+    --border: 220 13% 91%; /* light gray border #e5e7eb */
+    --input: 214 32% 91%; /* light gray input #f1f5f9 */
+    --ring: 258 90% 66%; /* purple focus ring */
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Keeping light theme for professional appearance */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    scroll-behavior: smooth;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif;
+  }
+}
+
+/* Updated font utilities for Playfair Display and Source Sans Pro */
+.font-serif {
+  font-family: var(--font-playfair-display);
+}
+
+.font-sans {
+  font-family: var(--font-source-sans-pro);
+}

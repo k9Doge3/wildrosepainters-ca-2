@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ],
+  "crons": [
+    { "path": "/api/internal/lead-drip/process", "schedule": "*/30 * * * *" },
+    { "path": "/api/billing/low-balance/check", "schedule": "0 * * * *" }
+  ]
+}
