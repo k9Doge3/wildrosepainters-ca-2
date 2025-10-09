@@ -1,4 +1,4 @@
-"use client"
+
 import { redirect } from 'next/navigation'
 import { getEmployeeSession, roleSatisfies } from '@/lib/employee-auth'
 import React from 'react'
